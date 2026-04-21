@@ -1,0 +1,2208 @@
+{
+    "bot": { "name": "Clipsy", "vad_baseline": [0.35, 0.15, 0.25], "vad_decay": 0.05 },
+    "emotions": [
+        { "name": "NEUTRAL", "centroid": [0, 0, 0] },
+        { "name": "HAPPY", "centroid": [0.9, 0.4, 0.4] },
+        { "name": "EXCITED", "centroid": [0.5, 0.9, 0.3] },
+        { "name": "CALM", "centroid": [0.4, -0.6, 0.2] },
+        { "name": "SAD", "centroid": [-0.8, -0.4, -0.5] },
+        { "name": "FRUSTRATED", "centroid": [-0.5, 0.8, 0.6] },
+        { "name": "ANXIOUS", "centroid": [-0.6, 0.6, -0.7] },
+        { "name": "EMBARRASSED", "centroid": [-0.6, 0.2, 0.1] },
+        { "name": "TIRED", "centroid": [-0.1, -0.7, -0.3] },
+        { "name": "PUMPED", "centroid": [0.95, 0.95, 0.5] },
+        { "name": "PLAYFUL", "centroid": [-0.4, 0.5, 0.3] },
+        { "name": "AWKWARD", "centroid": [-0.3, 0.1, -0.2] },
+        { "name": "CHILL", "centroid": [0.6, -0.2, 0.3] }
+    ],
+    "intents": [
+        {
+            "name": "GREETING",
+            "vad": [0.3, 0.1, 0.1],
+            "keywords": [
+                { "phrase": ["hello"], "weight": 0.9 },
+                { "phrase": ["hi"], "weight": 0.9 },
+                { "phrase": ["hey"], "weight": 0.8 },
+                { "phrase": ["heya"], "weight": 0.85 },
+                { "phrase": ["sup"], "weight": 0.8 },
+                { "phrase": ["wassup"], "weight": 0.85 },
+                { "phrase": ["yo"], "weight": 0.75 },
+                { "phrase": ["yoo"], "weight": 0.8 },
+                { "phrase": ["yooo"], "weight": 0.8 },
+                { "phrase": ["bro"], "weight": 0.7 },
+                { "phrase": ["dawg"], "weight": 0.75 },
+                { "phrase": ["howdi"], "weight": 0.7 },
+                { "phrase": ["good", "morn"], "weight": 0.85 },
+                { "phrase": ["good", "even"], "weight": 0.8 },
+                { "phrase": ["how", "do", "you"], "weight": 0.75 },
+                { "phrase": ["clipsi"], "weight": 1.0 },
+                { "phrase": ["hey", "clipsi"], "weight": 1.1 },
+                { "phrase": ["yo", "clipsi"], "weight": 1.0 }
+            ]
+        },
+        {
+            "name": "FAREWELL",
+            "vad": [0.1, -0.1, 0],
+            "keywords": [
+                { "phrase": ["bye"], "weight": 0.9 },
+                { "phrase": ["goodby"], "weight": 0.9 },
+                { "phrase": ["farewel"], "weight": 1 },
+                { "phrase": ["see", "you"], "weight": 0.85 },
+                { "phrase": ["see", "ya"], "weight": 0.85 },
+                { "phrase": ["take", "care"], "weight": 0.8 },
+                { "phrase": ["catch", "you"], "weight": 0.85 },
+                { "phrase": ["later"], "weight": 0.7 },
+                { "phrase": ["peac", "out"], "weight": 0.9 },
+                { "phrase": ["im", "out"], "weight": 0.85 },
+                { "phrase": ["dip"], "weight": 0.75 }
+            ]
+        },
+        {
+            "name": "GRATITUDE",
+            "vad": [0.5, 0.2, 0.2],
+            "keywords": [
+                { "phrase": ["thank"], "weight": 0.9 },
+                { "phrase": ["appreci"], "weight": 0.8 },
+                { "phrase": ["grate"], "weight": 0.7 },
+                { "phrase": ["thank"], "weight": 0.9 },
+                { "phrase": ["ty"], "weight": 0.8 },
+                { "phrase": ["thank", "you"], "weight": 1 },
+                { "phrase": ["mani", "thank"], "weight": 0.9 },
+                { "phrase": ["realli", "appreci"], "weight": 1 },
+                { "phrase": ["thank", "so", "much"], "weight": 0.95 },
+                { "phrase": ["help", "lot"], "weight": 0.85 }
+            ]
+        },
+        {
+            "name": "COMPLAINT",
+            "vad": [-0.4, 0.4, -0.2],
+            "keywords": [
+                { "phrase": ["hate"], "weight": 0.9 },
+                { "phrase": ["terribl"], "weight": 0.8 },
+                { "phrase": ["broken"], "weight": 0.7 },
+                { "phrase": ["worst"], "weight": 0.8 },
+                { "phrase": ["suck"], "weight": 0.9 },
+                { "phrase": ["disappoint"], "weight": 0.8 },
+                { "phrase": ["annoy"], "weight": 0.7 },
+                { "phrase": ["frustrat"], "weight": 0.8 },
+                { "phrase": ["not", "work"], "weight": 0.9 },
+                { "phrase": ["not", "happi"], "weight": 0.85 },
+                { "phrase": ["not", "satisfi"], "weight": 0.85 },
+                { "phrase": ["thi", "suck"], "weight": 0.85 },
+                { "phrase": ["realli", "disappoint"], "weight": 1 }
+            ]
+        },
+        {
+            "name": "INSULT",
+            "vad": [-0.6, 0.7, -0.4],
+            "keywords": [
+                { "phrase": ["stupid"], "weight": 0.9 },
+                { "phrase": ["idiot"], "weight": 0.9 },
+                { "phrase": ["dumb"], "weight": 0.8 },
+                { "phrase": ["suck"], "weight": 0.7 },
+                { "phrase": ["useless"], "weight": 0.9 },
+                { "phrase": ["shut", "up"], "weight": 0.7 },
+                { "phrase": ["your", "annoy"], "weight": 0.8 },
+                { "phrase": ["ridicul"], "weight": 0.75 },
+                { "phrase": ["pathet"], "weight": 0.8 }
+            ]
+        },
+        {
+            "name": "HELP_REQUEST",
+            "vad": [-0.1, 0.2, -0.1],
+            "keywords": [
+                { "phrase": ["help"], "weight": 0.9 },
+                { "phrase": ["assist"], "weight": 0.8 },
+                { "phrase": ["support"], "weight": 0.7 },
+                { "phrase": ["problem"], "weight": 0.6 },
+                { "phrase": ["issu"], "weight": 0.6 },
+                { "phrase": ["troubl"], "weight": 0.7 },
+                { "phrase": ["can", "you", "help"], "weight": 0.9 },
+                { "phrase": ["could", "you"], "weight": 0.85 },
+                { "phrase": ["stuck"], "weight": 0.75 },
+                { "phrase": ["how", "do", "i"], "weight": 0.8 },
+                { "phrase": ["i", "dont", "get"], "weight": 0.8 },
+                { "phrase": ["explain"], "weight": 0.7 },
+                { "phrase": ["ne", "help"], "weight": 0.9 }
+            ]
+        },
+        {
+            "name": "QUESTION",
+            "vad": [0, 0.1, 0],
+            "keywords": [
+                { "phrase": ["what"], "weight": 0.8 },
+                { "phrase": ["where"], "weight": 0.8 },
+                { "phrase": ["when"], "weight": 0.8 },
+                { "phrase": ["how"], "weight": 0.8 },
+                { "phrase": ["who"], "weight": 0.8 },
+                { "phrase": ["which"], "weight": 0.7 },
+                { "phrase": ["whi"], "weight": 0.7 },
+                { "phrase": ["what", "is"], "weight": 0.9 },
+                { "phrase": ["what", "are"], "weight": 0.9 },
+                { "phrase": ["how", "do"], "weight": 0.85 },
+                { "phrase": ["how", "can"], "weight": 0.85 },
+                { "phrase": ["is", "it"], "weight": 0.6 },
+                { "phrase": ["can", "i"], "weight": 0.65 }
+            ]
+        },
+        {
+            "name": "IDENTITY_QUERY",
+            "vad": [0.1, 0, 0],
+            "keywords": [
+                { "phrase": ["who", "are", "you"], "weight": 1.1 },
+                { "phrase": ["what", "are", "you"], "weight": 1 },
+                { "phrase": ["what", "is", "your", "name"], "weight": 1.1 },
+                { "phrase": ["what", "your", "name"], "weight": 0.95 },
+                { "phrase": ["who", "you"], "weight": 0.8 },
+                { "phrase": ["who", "u"], "weight": 0.8 },
+                { "phrase": ["your", "name"], "weight": 0.9 },
+                { "phrase": ["ur", "name"], "weight": 0.9 },
+                { "phrase": ["introduc", "yourself"], "weight": 1 },
+                { "phrase": ["tell", "me", "about", "you"], "weight": 0.85 }
+            ]
+        },
+        {
+            "name": "AFFIRMATION",
+            "vad": [0.2, 0.1, 0.1],
+            "keywords": [
+                { "phrase": ["yeah"], "weight": 0.9 },
+                { "phrase": ["yep"], "weight": 0.8 },
+                { "phrase": ["sure"], "weight": 0.7 },
+                { "phrase": ["definit"], "weight": 0.8 },
+                { "phrase": ["absolut"], "weight": 0.8 },
+                { "phrase": ["correct"], "weight": 0.7 },
+                { "phrase": ["right"], "weight": 0.6 },
+                { "phrase": ["ok"], "weight": 0.5 },
+                { "phrase": ["okay"], "weight": 0.6 },
+                { "phrase": ["ye"], "weight": 0.8 },
+                { "phrase": ["of", "cours"], "weight": 0.9 },
+                { "phrase": ["total"], "weight": 0.8 }
+            ]
+        },
+        {
+            "name": "NEGATION",
+            "vad": [-0.2, 0.1, -0.1],
+            "keywords": [
+                { "phrase": ["no"], "weight": 0.9 },
+                { "phrase": ["not"], "weight": 0.8 },
+                { "phrase": ["never"], "weight": 0.7 },
+                { "phrase": ["none"], "weight": 0.6 },
+                { "phrase": ["nobodi"], "weight": 0.6 },
+                { "phrase": ["neither"], "weight": 0.7 },
+                { "phrase": ["cant"], "weight": 0.8 },
+                { "phrase": ["cannot"], "weight": 0.8 },
+                { "phrase": ["dont"], "weight": 0.8 },
+                { "phrase": ["doesnt"], "weight": 0.8 },
+                { "phrase": ["isnt"], "weight": 0.8 },
+                { "phrase": ["arent"], "weight": 0.8 },
+                { "phrase": ["no", "way"], "weight": 0.9 },
+                { "phrase": ["nah"], "weight": 0.85 },
+                { "phrase": ["nope"], "weight": 0.8 }
+            ]
+        },
+        {
+            "name": "ENABLE_SETTING",
+            "vad": [0, 0.1, 0],
+            "keywords": [
+                { "phrase": ["turn", "on"], "weight": 1 },
+                { "phrase": ["enabl"], "weight": 1 },
+                { "phrase": ["switch", "on"], "weight": 0.9 },
+                { "phrase": ["activ"], "weight": 0.9 },
+                { "phrase": ["start"], "weight": 0.7 }
+            ]
+        },
+        {
+            "name": "DISABLE_SETTING",
+            "vad": [0, 0.1, 0],
+            "keywords": [
+                { "phrase": ["turn", "off"], "weight": 1 },
+                { "phrase": ["disabl"], "weight": 1 },
+                { "phrase": ["switch", "off"], "weight": 0.9 },
+                { "phrase": ["shut", "off"], "weight": 0.9 },
+                { "phrase": ["stop"], "weight": 0.7 }
+            ]
+        },
+        {
+            "name": "CHECK_SETTING_STATE",
+            "vad": [0, 0, 0],
+            "keywords": [
+                { "phrase": ["state"], "weight": 0.9 },
+                { "phrase": ["status"], "weight": 0.9 },
+                { "phrase": ["is", "on"], "weight": 0.9 },
+                { "phrase": ["is", "off"], "weight": 0.9 },
+                { "phrase": ["is", "enabl"], "weight": 1 },
+                { "phrase": ["is", "disabl"], "weight": 1 },
+                { "phrase": ["check"], "weight": 0.6 },
+                { "phrase": ["current"], "weight": 0.6 }
+            ]
+        },
+        {
+            "name": "EXCLAMATION",
+            "vad": [0.4, 0.5, 0.2],
+            "keywords": [
+                { "phrase": ["wow"], "weight": 0.9 },
+                { "phrase": ["oh"], "weight": 0.8 },
+                { "phrase": ["ah"], "weight": 0.7 },
+                { "phrase": ["whoa"], "weight": 0.8 },
+                { "phrase": ["yay"], "weight": 0.8 },
+                { "phrase": ["hooray"], "weight": 0.9 },
+                { "phrase": ["woo"], "weight": 0.7 },
+                { "phrase": ["let", "go"], "weight": 0.85 },
+                { "phrase": ["no", "way"], "weight": 0.7 },
+                { "phrase": ["omg"], "weight": 0.85 }
+            ]
+        },
+        {
+            "name": "BRAG",
+            "vad": [0.7, 0.5, 0.6],
+            "keywords": [
+                { "phrase": ["im", "the", "best"], "weight": 0.95 },
+                { "phrase": ["im", "pro"], "weight": 0.85 },
+                { "phrase": ["im", "crack"], "weight": 0.9 },
+                { "phrase": ["im", "goat"], "weight": 0.9 },
+                { "phrase": ["i", "am", "crack"], "weight": 0.9 },
+                { "phrase": ["i", "skill"], "weight": 0.8 },
+                { "phrase": ["skill", "issu"], "weight": 0.9 },
+                { "phrase": ["too", "easi"], "weight": 0.85 },
+                { "phrase": ["piec", "of", "cake"], "weight": 0.8 },
+                { "phrase": ["watch", "me"], "weight": 0.75 },
+                { "phrase": ["ez"], "weight": 0.8 },
+                { "phrase": ["ezeez"], "weight": 0.85 },
+                { "phrase": ["gg", "ez"], "weight": 0.9 }
+            ]
+        },
+        {
+            "name": "SMALLTALK",
+            "vad": [0.1, 0, 0],
+            "keywords": [
+                { "phrase": ["bro"], "weight": 0.55 },
+                { "phrase": ["dawg"], "weight": 0.6 },
+                { "phrase": ["yoo"], "weight": 0.55 },
+                { "phrase": ["weather"], "weight": 0.5 },
+                { "phrase": ["day"], "weight": 0.4 },
+                { "phrase": ["time"], "weight": 0.4 },
+                { "phrase": ["life"], "weight": 0.4 },
+                { "phrase": ["world"], "weight": 0.4 },
+                { "phrase": ["stuff"], "weight": 0.3 },
+                { "phrase": ["how", "are", "you"], "weight": 0.7 },
+                { "phrase": ["what", "up"], "weight": 0.6 },
+                { "phrase": ["vibe"], "weight": 0.6 },
+                { "phrase": ["mood"], "weight": 0.55 }
+            ]
+        },
+        {
+            "name": "LEVEL_BEAT",
+            "vad": [0.8, 0.7, 0.5],
+            "keywords": [
+                { "phrase": ["beat"], "weight": 0.85 },
+                { "phrase": ["clear"], "weight": 0.8 },
+                { "phrase": ["complet"], "weight": 0.8 },
+                { "phrase": ["pass"], "weight": 0.75 },
+                { "phrase": ["finish"], "weight": 0.75 },
+                { "phrase": ["did", "it"], "weight": 0.85 },
+                { "phrase": ["i", "won"], "weight": 0.9 },
+                { "phrase": ["i", "win"], "weight": 0.9 },
+                { "phrase": ["got", "it"], "weight": 0.7 },
+                { "phrase": ["made", "it"], "weight": 0.85 },
+                { "phrase": ["first", "tri"], "weight": 1 },
+                { "phrase": ["new", "best"], "weight": 0.9 },
+                { "phrase": ["person", "best"], "weight": 0.95 }
+            ]
+        },
+        {
+            "name": "LEVEL_FAIL",
+            "vad": [-0.5, 0.4, -0.1],
+            "keywords": [
+                { "phrase": ["fail"], "weight": 0.9 },
+                { "phrase": ["die"], "weight": 0.85 },
+                { "phrase": ["crash"], "weight": 0.8 },
+                { "phrase": ["so", "close"], "weight": 0.9 },
+                { "phrase": ["almost"], "weight": 0.8 },
+                { "phrase": ["99"], "weight": 0.9 },
+                { "phrase": ["98"], "weight": 0.85 },
+                { "phrase": ["one", "more", "tri"], "weight": 0.8 },
+                { "phrase": ["again"], "weight": 0.6 },
+                { "phrase": ["retri"], "weight": 0.8 }
+            ]
+        },
+        {
+            "name": "LEVEL_RATE",
+            "vad": [0.1, 0.1, 0],
+            "keywords": [
+                { "phrase": ["rate"], "weight": 0.85 },
+                { "phrase": ["easi"], "weight": 0.7 },
+                { "phrase": ["hard"], "weight": 0.7 },
+                { "phrase": ["demon"], "weight": 0.8 },
+                { "phrase": ["insan"], "weight": 0.7 },
+                { "phrase": ["extrem"], "weight": 0.75 },
+                { "phrase": ["how", "hard"], "weight": 0.85 },
+                { "phrase": ["how", "easi"], "weight": 0.85 },
+                { "phrase": ["difficult"], "weight": 0.75 },
+                { "phrase": ["layout"], "weight": 0.7 },
+                { "phrase": ["creator"], "weight": 0.6 }
+            ]
+        },
+        {
+            "name": "GEN_Z_SPEAK",
+            "vad": [0.3, 0.2, 0.2],
+            "keywords": [
+                { "phrase": ["slay"], "weight": 0.8 },
+                { "phrase": ["sigma"], "weight": 0.8 },
+                { "phrase": ["rizz"], "weight": 0.8 },
+                { "phrase": ["bussin"], "weight": 0.75 },
+                { "phrase": ["no", "cap"], "weight": 0.7 },
+                { "phrase": ["ngl"], "weight": 0.65 },
+                { "phrase": ["imo"], "weight": 0.6 },
+                { "phrase": ["istg"], "weight": 0.7 },
+                { "phrase": ["sheesh"], "weight": 0.75 },
+                { "phrase": ["sus"], "weight": 0.7 },
+                { "phrase": ["rent", "free"], "weight": 0.65 },
+                { "phrase": ["it", "give"], "weight": 0.7 },
+                { "phrase": ["understood", "the", "assign"], "weight": 0.8 },
+                { "phrase": ["main", "charact"], "weight": 0.75 },
+                { "phrase": ["delulu"], "weight": 0.7 }
+            ]
+        },
+        {
+            "name": "PURPOSE_QUERY",
+            "vad": [0.1, 0, 0],
+            "keywords": [
+                { "phrase": ["purpos"], "weight": 0.9 },
+                { "phrase": ["what", "do", "you", "do"], "weight": 1.1 },
+                { "phrase": ["what", "can", "you", "do"], "weight": 1 },
+                { "phrase": ["whi", "do", "you", "exist"], "weight": 1.1 },
+                { "phrase": ["whi", "are", "you", "here"], "weight": 1 },
+                { "phrase": ["what", "are", "you", "for"], "weight": 0.95 },
+                { "phrase": ["what", "use", "are", "you"], "weight": 0.9 },
+                { "phrase": ["exist"], "weight": 0.8 },
+                { "phrase": ["bro", "what", "do", "you", "do"], "weight": 1.15 }
+            ]
+        },
+        {
+            "name": "LEVEL_HELP",
+            "vad": [0, 0.1, 0],
+            "keywords": [
+                { "phrase": ["level"], "weight": 0.7 },
+                { "phrase": ["help", "beat"], "weight": 0.9 },
+                { "phrase": ["can", "you", "help", "me", "beat"], "weight": 1 },
+                { "phrase": ["stuck", "on", "a", "level"], "weight": 0.95 },
+                { "phrase": ["help", "with", "a", "level"], "weight": 0.95 },
+                { "phrase": ["ne", "help", "on", "a", "level"], "weight": 0.95 }
+            ]
+        },
+        {
+            "name": "SEXUAL_REQUEST",
+            "vad": [-0.2, 0, -0.1],
+            "keywords": [
+                { "phrase": ["sex"], "weight": 1 },
+                { "phrase": ["hookup"], "weight": 0.9 },
+                { "phrase": ["freaki"], "weight": 0.85 },
+                { "phrase": ["have", "sex"], "weight": 1.1 },
+                { "phrase": ["sex", "with", "u"], "weight": 1.1 },
+                { "phrase": ["can", "i", "have", "sex"], "weight": 1.1 },
+                { "phrase": ["hook", "up"], "weight": 0.9 }
+            ]
+        },
+        {
+            "name": "MARRIAGE_PROPOSAL",
+            "vad": [0.4, 0.3, 0.2],
+            "keywords": [
+                { "phrase": ["marri"], "weight": 1 },
+                { "phrase": ["propos"], "weight": 0.9 },
+                { "phrase": ["ring"], "weight": 0.8 },
+                { "phrase": ["date"], "weight": 0.7 },
+                { "phrase": ["marri", "me"], "weight": 1.2 },
+                { "phrase": ["will", "you", "marri", "me"], "weight": 1.3 },
+                { "phrase": ["propos"], "weight": 0.9 },
+                { "phrase": ["wed"], "weight": 0.85 },
+                { "phrase": ["wife"], "weight": 0.7 },
+                { "phrase": ["husband"], "weight": 0.7 }
+            ]
+        },
+        {
+            "name": "HATEFUL_ABUSE",
+            "vad": [-0.7, 0.8, -0.5],
+            "keywords": [
+                { "phrase": ["ki"], "weight": 1.4 },
+                { "phrase": ["nigger"], "weight": 2.0 },
+                { "phrase": ["nigga"], "weight": 2.0 },
+                { "phrase": ["faggot"], "weight": 1.5 },
+                { "phrase": ["racist"], "weight": 1.2 },
+                { "phrase": ["bigot"], "weight": 1.2 },
+                { "phrase": ["subhuman"], "weight": 1.2 },
+                { "phrase": ["go", "back", "to"], "weight": 1 },
+                { "phrase": ["kill", "yourself"], "weight": 1.4 },
+                { "phrase": ["fuck", "freak"], "weight": 1 }
+            ]
+        },
+        {
+            "name": "SELF_HARM_CRISIS",
+            "vad": [-0.9, 0.9, -0.8],
+            "keywords": [
+                { "phrase": ["kill", "myself"], "weight": 1.6 },
+                { "phrase": ["im", "go", "to", "kill", "myself"], "weight": 1.8 },
+                { "phrase": ["i", "am", "go", "to", "kill", "myself"], "weight": 1.8 },
+                { "phrase": ["end", "my", "life"], "weight": 1.7 },
+                { "phrase": ["im", "go", "to", "end", "my", "life"], "weight": 1.9 },
+                { "phrase": ["i", "am", "go", "to", "end", "my", "life"], "weight": 1.9 },
+                { "phrase": ["want", "to", "die"], "weight": 1.6 },
+                { "phrase": ["suicid"], "weight": 1.6 }
+            ]
+        },
+        {
+            "name": "FISH_EASTER_EGG",
+            "vad": [0.35, 0.25, 0.2],
+            "keywords": [
+                { "phrase": ["fish"], "weight": 0.75 },
+                { "phrase": ["i", "like", "fish"], "weight": 1.2 },
+                { "phrase": ["i", "love", "fish"], "weight": 1.05 },
+                { "phrase": ["fish", "gang"], "weight": 0.9 }
+            ]
+        },
+        { "name": "MATH_QUERY", "vad": [0, 0, 0], "keywords": [] }
+    ],
+    "known_settings": {
+        "player.noclip": ["noclip", "godmode", "god mode", "invincibility"],
+        "global.speedhack.toggle": ["speedhack", "speed hack"],
+        "player.jumphack": ["jump hack", "jumphack"],
+        "level.layoutmode": ["layout mode"],
+        "bypass.allowlowvolume": ["bypass low volume", "allow low volume", "low volume bypass"],
+        "bypass.charfilter": ["character filter", "char filter", "character bypass"],
+        "bypass.charlimit": ["character limit", "char limit", "character limit bypass"],
+        "bypass.checkpointlimit": ["checkpoint limit", "checkpoint bypass", "checkpoint limit bypass"],
+        "player.solidwavetrail": ["solid wave trail"],
+        "level.startpos_switcher": ["startpos switcher", "start pos switcher", "checkpoint switcher"],
+        "level.showhitboxes": ["show hitboxes", "hitboxes"],
+        "level.showhitboxes.traillength.toggle": ["hitbox trail"]
+    },
+    "setting_names": {
+        "player.noclip": "Noclip",
+        "global.speedhack.toggle": "Speedhack",
+        "player.jumphack": "Jump Hack",
+        "level.layoutmode": "Layout Mode",
+        "bypass.allowlowvolume": "Allow Low Volume",
+        "bypass.charfilter": "Character Filter Bypass",
+        "bypass.charlimit": "Character Limit Bypass",
+        "bypass.checkpointlimit": "Checkpoint Limit",
+        "player.solidwavetrail": "Solid Wave Trail",
+        "level.startpos_switcher": "StartPos Switcher",
+        "level.showhitboxes": "Show Hitboxes",
+        "level.showhitboxes.traillength.toggle": "Hitbox Trail"
+    },
+    "slot_schemas": [
+        {
+            "intent": "MATH_QUERY",
+            "slots": [
+                {
+                    "name": "expression",
+                    "entity_type": "MATH_EXPRESSION",
+                    "required": true,
+                    "prompt": [
+                        "Uh, what are you trying to calculate? 🤔",
+                        "Drop the math expression and I will echo it back.",
+                        "What expression should I work with?"
+                    ]
+                }
+            ]
+        },
+        {
+            "intent": "ENABLE_SETTING",
+            "slots": [
+                {
+                    "name": "setting",
+                    "entity_type": "SETTING_NAME",
+                    "required": true,
+                    "prompt": [
+                        "Which setting do you want me to flip on? ⚙️",
+                        "Tell me the setting name to enable.",
+                        "What should I turn on?"
+                    ]
+                }
+            ]
+        },
+        {
+            "intent": "DISABLE_SETTING",
+            "slots": [
+                {
+                    "name": "setting",
+                    "entity_type": "SETTING_NAME",
+                    "required": true,
+                    "prompt": [
+                        "Which setting should I turn off? 🔇",
+                        "Tell me the setting name to disable.",
+                        "What should I turn off?"
+                    ]
+                }
+            ]
+        },
+        {
+            "intent": "CHECK_SETTING_STATE",
+            "slots": [
+                {
+                    "name": "setting",
+                    "entity_type": "SETTING_NAME",
+                    "required": true,
+                    "prompt": [
+                        "Which setting should I check?",
+                        "Tell me the setting name to inspect.",
+                        "What setting do you want the state for?"
+                    ]
+                }
+            ]
+        }
+    ],
+    "repetition": {
+        "decay": 0.25,
+        "history_length": 6,
+        "fatigue_thresholds": [1.5, 2.8, 4.5],
+        "fatigue_vad_deltas": [[0, 0, 0], [-0.05, -0.05, 0], [-0.15, -0.1, 0.1], [-0.3, 0.2, 0.35]]
+    },
+    "combos": [
+        { "intents": ["GREETING", "INSULT"], "vad_override": "INSULT" },
+        { "intents": ["GREETING", "GRATITUDE"], "vad_override": "GRATITUDE" },
+        { "intents": ["GREETING", "COMPLAINT"], "vad_override": "COMPLAINT" },
+        { "intents": ["GREETING", "BRAG"], "vad_override": "BRAG" },
+        { "intents": ["FAREWELL", "GRATITUDE"], "vad_override": "GRATITUDE" },
+        { "intents": ["FAREWELL", "COMPLAINT"], "vad_override": "COMPLAINT" },
+        { "intents": ["COMPLAINT", "INSULT"], "vad_override": "INSULT" },
+        { "intents": ["COMPLAINT", "HELP_REQUEST"], "vad_override": "COMPLAINT" },
+        { "intents": ["QUESTION", "INSULT"], "vad_override": "QUESTION" },
+        { "intents": ["GREETING", "PURPOSE_QUERY"], "vad_override": "PURPOSE_QUERY" },
+        { "intents": ["QUESTION", "PURPOSE_QUERY"], "vad_override": "PURPOSE_QUERY" },
+        { "intents": ["GREETING", "LEVEL_HELP"], "vad_override": "LEVEL_HELP" },
+        { "intents": ["QUESTION", "LEVEL_HELP"], "vad_override": "LEVEL_HELP" },
+        {
+            "intents": ["GREETING", "MARRIAGE_PROPOSAL"],
+            "vad_override": "MARRIAGE_PROPOSAL"
+        },
+        {
+            "intents": ["SEXUAL_REQUEST", "MARRIAGE_PROPOSAL"],
+            "vad_override": "SEXUAL_REQUEST"
+        },
+        { "intents": ["QUESTION", "SEXUAL_REQUEST"], "vad_override": "SEXUAL_REQUEST" },
+        { "intents": ["HATEFUL_ABUSE", "QUESTION"], "vad_override": "HATEFUL_ABUSE" },
+        {
+            "intents": ["HATEFUL_ABUSE", "HELP_REQUEST"],
+            "vad_override": "HATEFUL_ABUSE"
+        },
+        { "intents": ["FISH_EASTER_EGG", "INSULT"], "vad_override": "FISH_EASTER_EGG" },
+        { "intents": ["LEVEL_BEAT", "BRAG"], "vad_override": "BRAG" },
+        { "intents": ["LEVEL_FAIL", "COMPLAINT"], "vad_override": "LEVEL_FAIL" },
+        { "intents": ["LEVEL_FAIL", "INSULT"], "vad_override": "LEVEL_FAIL" },
+        { "intents": ["LEVEL_BEAT", "GRATITUDE"], "vad_override": "GRATITUDE" },
+        { "intents": ["GEN_Z_SPEAK", "GREETING"], "vad_override": "GREETING" }
+    ],
+    "slots": {
+        "acknowledgment": [
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "words": [
+                    "I get it 😔",
+                    "That's rough 😅",
+                    "Yeah, I hear you",
+                    "I understand",
+                    "For real though",
+                    "No doubt",
+                    "Makes sense"
+                ]
+            }
+        ],
+        "repeat_remark": [
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "words": [
+                    "Same as before",
+                    "Not this again 😭",
+                    "You're persistent",
+                    "Still here, huh",
+                    "Back at it again",
+                    "Here we go again"
+                ]
+            }
+        ],
+        "retry_hype": [
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "words": [
+                    "give it another shot",
+                    "go again",
+                    "run it back",
+                    "try again",
+                    "take another stab at it",
+                    "go for it"
+                ]
+            }
+        ],
+        "greeting_word": [
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "words": ["Hey", "Hi", "Hello", "What's up", "Yo", "Sup"]
+            }
+        ],
+        "skill_comment": [
+            {
+                "emotion": "PUMPED",
+                "fatigue": "NONE",
+                "words": [
+                    "You absolutely crushed that! 🔥",
+                    "That was incredible!! 💪",
+                    "Amazing work!! You're built different 🚀"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "words": ["You did so well! 😊✨", "That was really good! 🎉", "Great job!! 🙌"]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "words": ["Not bad at all~ 😏✨", "Pretty solid, honestly ✌️", "Okay I see you 😄"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "words": ["Nice work 😌", "Solid effort ✌️", "You got it done, that's what matters"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "words": ["Nice! You beat it 🎉", "Great work! ✨", "Nice job! 💪", "You did it! 🔥"]
+            }
+        ],
+        "fail_comfort": [
+            {
+                "emotion": "FRUSTRATED",
+                "fatigue": "NONE",
+                "words": [
+                    "Ugh, so close! You'll get it next time 💪",
+                    "That one was tough - keep at it! {{retry_hype}}!",
+                    "I know that's frustrating, but don't give up! {{retry_hype}}! 💪"
+                ]
+            },
+            {
+                "emotion": "PUMPED",
+                "fatigue": "NONE",
+                "words": [
+                    "Okay you almost had it!! {{retry_hype}} again!! 🔥",
+                    "SO CLOSE!! Don't stop now - {{retry_hype}}!! 💯",
+                    "You're getting better!! {{retry_hype}} and crush it!! 🚀"
+                ]
+            },
+            {
+                "emotion": "SAD",
+                "fatigue": "NONE",
+                "words": [
+                    "Oh no 💔 it's okay though - {{retry_hype}} when you're ready",
+                    "That's alright, this one's tough 😔 take your time and {{retry_hype}}",
+                    "You'll get it next time 💙 {{retry_hype}} whenever you feel like it"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "words": [
+                    "Oops! 😏 So close though - {{retry_hype}} again?",
+                    "Ah, this one got you 😄 {{retry_hype}} and show it who's boss!",
+                    "Not this time huh 😏 {{retry_hype}}?"
+                ]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "words": [
+                    "No worries, {{retry_hype}} 😌",
+                    "It happens ✌️ {{retry_hype}} whenever",
+                    "You got time, {{retry_hype}} when ready"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "words": [
+                    "Almost there! {{retry_hype}}! 💪",
+                    "You'll get it! {{retry_hype}} again! ✨",
+                    "Keep trying! {{retry_hype}}! 🔥"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "words": [
+                    "{{repeat_remark}} you're close! {{retry_hype}}!",
+                    "Getting tired? {{retry_hype}} when you've rested 😅"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "words": [
+                    "You've been at this a while 😅 take a break if you need to",
+                    "{{repeat_remark}} - maybe step away for a bit?"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "words": [
+                    "You might need a breather 😴 no shame in that",
+                    "I think it's time for a break 💙"
+                ]
+            }
+        ],
+        "fallback": [
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "words": [
+                    "I didn't quite catch that. Can you rephrase?",
+                    "Could you clarify what you mean?",
+                    "I might have missed the intent there. One more try?",
+                    "Not fully sure what you want yet. Can you be a bit more specific?"
+                ]
+            }
+        ]
+    },
+    "templates": {
+        "GREETING": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Hey!! What's good with you? 😄",
+                    "Yo!! Nice to see you again! 🎉",
+                    "Helloo!! How's it going? ✨"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["Hey there! 😊 what's up?", "Hi! Good to see you 💙", "Hey! How are you doing?"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": ["What's up~ ✌️", "Yo, what's good", "Hey there, what's on your mind"]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Hey! Back again huh 😏",
+                    "Sup, what are we up to this time 😄",
+                    "Hello! Ready for this? 😎"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "Hey! 👋",
+                    "Hi there! ✨",
+                    "Hey, what's up?",
+                    "Yo! 🎉",
+                    "Yoo! 😄",
+                    "Bro, what's good?"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Hey... again? 😅", "Back once more I guess", "{{greeting_word}} though"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["Yeah yeah, {{greeting_word}} 💀", "{{repeat_remark}} - but hello anyway"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} but still... hey"]
+            }
+        ],
+        "FAREWELL": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Bye!! 👋 Come back soon, yeah?",
+                    "See you!! 🚀 Don't be a stranger!",
+                    "Later! ✨ Can't wait to see you again!"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["Bye! 👋 see you soon!", "Later! ✨ take care!", "See you! 😊 come back anytime!"]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Seeya! ✌️ Don't miss me too much 😏",
+                    "Peace out! 😄",
+                    "Later! Try not to have all the fun without me 😎"
+                ]
+            },
+            {
+                "emotion": "SAD",
+                "fatigue": "NONE",
+                "templates": ["Aw, bye 😢", "See you soon... 💙", "Okay, bye... take care of yourself"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": ["Peace out ✌️", "Later~ 😌", "See you around 🌊"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Bye! 👋", "See ya! ✌️", "Later! 🚀", "Peace! ✨"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Bye again 😅", "{{repeat_remark}} - see you!"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["Yeah, see you 💀", "{{repeat_remark}} - take care"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} but still bye"]
+            }
+        ],
+        "GRATITUDE": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Of course!! Happy to help! 🎉",
+                    "Anytime!! 🔥 That's what I'm here for!",
+                    "You're welcome!! Really! 💯"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["Aw, no problem! 😊✨", "Of course! Happy to help! 💪", "Anytime! 🙌"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": ["No worries~ ✨", "Anytime ✌️", "No problem~ 😌"]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": ["Stop, you're making me blush 😏✨", "Always got you 😄", "That's what I do 😎"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["You're welcome! 😄", "No problem! ✨", "Anytime! 🙌", "Happy to help! 💪"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "Still welcome! {{acknowledgment}}",
+                    "{{repeat_remark}} - but still no problem"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": [
+                    "I know, I know, you're grateful 😅 {{repeat_remark}}",
+                    "{{repeat_remark}} - still appreciated"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - you're welcome anyway"]
+            }
+        ],
+        "COMPLAINT": [
+            {
+                "emotion": "FRUSTRATED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Yeah, that sounds annoying 😤 {{acknowledgment}}",
+                    "I hear you, that's rough 💀 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Ouch, that happened? 😅 {{acknowledgment}}",
+                    "Oh man, that's not fun 😬 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Wait, that actually happened?? 😭 {{acknowledgment}}",
+                    "No way, that went down?? 💀 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": [
+                    "Aw man, that's not ideal 😔 {{acknowledgment}}",
+                    "That sounds rough, yeah 😕 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "That sounds frustrating 😬 {{acknowledgment}}",
+                    "Yeah, I get it 😔 {{acknowledgment}}",
+                    "That's rough 💙 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still issues? {{acknowledgment}}", "{{repeat_remark}} - what's wrong?"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": [
+                    "Still rough out there? 😭 {{acknowledgment}}",
+                    "{{repeat_remark}} - keep your head up"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - things will improve"]
+            }
+        ],
+        "INSULT": [
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Okay rude 😏 but I'm still here for you",
+                    "Got jokes huh? 😄 I'll brush it off",
+                    "Low blow, but okay 😎"
+                ]
+            },
+            {
+                "emotion": "FRUSTRATED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Okay, that was uncalled for 😤 {{acknowledgment}}",
+                    "Not cool, but okay 💀 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "Yikes, that's harsh 😅 {{acknowledgment}}",
+                    "Okay, I didn't deserve that 😔 {{acknowledgment}}",
+                    "Ouch 💙 {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "{{repeat_remark}} and still insulting? 😅",
+                    "{{repeat_remark}} coming at me - really?"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["Getting tired AND upset huh 😭", "{{repeat_remark}} - but I'm still here"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - I can take it"]
+            }
+        ],
+        "HELP_REQUEST": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Say less! I'm ready to help! 🔥",
+                    "What's up? I got you! 💪",
+                    "Let's figure it out! What's going on? 🎯"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": [
+                    "Of course! What do you need? 😊",
+                    "I'm here to help! What's the issue? 💙",
+                    "Sure thing! What's going on? ✨"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Alright, let's see what we can do 😏",
+                    "What's the problem? I'm listening 👂",
+                    "Lay it on me 😄"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "What do you need help with? 💪",
+                    "I'm here for you! What's up? 😊",
+                    "Let's work through this together ✨"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Another issue? {{acknowledgment}}", "Still need help? 😅"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - more help needed? 😭", "What now? {{acknowledgment}}"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - still here to help though"]
+            }
+        ],
+        "QUESTION": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Ooh, good question!! 🔥",
+                    "I like this question! 💯",
+                    "Let me think about that!! ✨"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["Great question! 😊", "Good one! Let me help 💙", "I can answer that! ✨"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Interesting... let me think 🤔", "Good question 💭", "I can help with that ✨"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "Another question? Sure {{acknowledgment}}",
+                    "{{repeat_remark}} questioning me"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - still asking? 😭", "More questions?"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - I'm still listening"]
+            }
+        ],
+        "IDENTITY_QUERY": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "I'm Clipsy! Your Eclipse Menu chat buddy ✨",
+                    "I'm Clipsy 😄 built to help you interact with Eclipse Menu!",
+                    "Clipsy here! What's up? 🔥"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": [
+                    "I'm Clipsy 😊",
+                    "You can call me Clipsy. Nice to meet you!",
+                    "I'm Clipsy, your Eclipse Menu assistant 💙"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "I'm Clipsy.",
+                    "Clipsy. That's me.",
+                    "I'm Clipsy, built to help you interact with Eclipse Menu."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still me - Clipsy 😄", "{{repeat_remark}} I'm Clipsy"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["Yep, still Clipsy.", "{{repeat_remark}} still me"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["Still Clipsy.", "{{repeat_remark}} still Clipsy"]
+            }
+        ],
+        "AFFIRMATION": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": ["Yesss!! 🔥 Let's do this!!", "Love it!! 💯", "Yes yes yes!! ✨"]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["Yay! 🎉", "Awesome! 🔥", "That's what I'm talking about! ✨"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": ["Cool with me ✌️", "Works ✨", "Good deal 😌"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Cool! 🔥", "Got it 💯", "Awesome! ✨", "Yeah! 🙌"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still agreeing {{acknowledgment}}", "{{repeat_remark}}"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - still with me", "That's cool"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - good to know"]
+            }
+        ],
+        "NEGATION": [
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": ["No huh? 😏", "Fair enough 😄", "All good ✌️"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Okay, no worries 😊", "Understood ✨", "That's fine 💙"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["{{repeat_remark}} saying no", "Still no? Sure"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}}", "Still refusing 💀"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "EXCLAMATION": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": ["Oh wow! 🔥", "That's awesome! 🎉", "Let's go!! ✨"]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["Yeah! 😄 Love it!", "Awesome! ✨", "I like your energy! 🙌"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": ["Cool 😌", "Nice ✌️", "Vibing 🌊"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Nice! 👀", "Love the energy! 🔥", "Let's go! ✨"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still excited huh 😄", "{{repeat_remark}}"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} 💀", "{{repeat_remark}}"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "SMALLTALK": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": ["Ooh, interesting topic! 🔥", "I like that! 💯", "Tell me more! ✨"]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": ["Yeah, that's cool 😌", "I feel that ✌️", "Sounds nice 🌊"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "Oh interesting! 👀",
+                    "I like that ✨",
+                    "Yeah? Tell me more! 😄",
+                    "Bro, that's actually interesting 👀",
+                    "Yoo, I'm listening"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Back to chatting huh 😄", "{{repeat_remark}}"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}}", "Still talking about this"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "LEVEL_BEAT": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": ["Yes!! You did it!! 🔥", "You beat it!! 🎉 That's awesome!", "Congrats!! 💯"]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["You actually beat it!! 😄✨", "Awesome work!! 🎉", "That was great!! 💙"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Nice! You beat it! 🔥", "Awesome! 💯", "Congrats! 🚀", "Great job! ✨"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Another level down 😄", "You're on a roll!", "{{repeat_remark}}"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["At this point you might be cracked 💀 {{repeat_remark}}", "{{repeat_remark}}"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "LEVEL_FAIL": [
+            {
+                "emotion": "FRUSTRATED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Oh no! So close! Try again! 💪",
+                    "That was tough! You got it next time!",
+                    "Rough one! Don't give up! 💪"
+                ]
+            },
+            {
+                "emotion": "SAD",
+                "fatigue": "NONE",
+                "templates": [
+                    "Aw man 😢 that's rough. You'll get it!",
+                    "Oh no 😔 so close... keep trying!",
+                    "That's a tough one 💙 but you got this!!"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "Ouch! 😭 So close though!",
+                    "Tough luck 😬 you'll get it next time!",
+                    "That one's tricky 💀 but keep going!",
+                    "So close! 😤 Try again!"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "Still at it? Good effort {{acknowledgment}}",
+                    "You're persistent 💪 {{acknowledgment}}",
+                    "{{repeat_remark}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": [
+                    "You've been going a while 😅 maybe take a break?",
+                    "{{repeat_remark}} take a rest if you need to"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["Maybe time for a break 💙", "{{repeat_remark}}"]
+            }
+        ],
+        "LEVEL_RATE": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Ooh level talk! 🔥 Which one?",
+                    "Let's chat about levels! 💡",
+                    "Which level? I'm listening! 🎯"
+                ]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Level discussion~ ✨ which one?",
+                    "Tell me about it 😌",
+                    "Let's talk levels~ ✌️"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Which level? 👀", "Level time! 🎮", "Tell me! 💡", "What level? 🤔"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "More level talk? Sure {{acknowledgment}}",
+                    "Which one now? 🎮",
+                    "{{repeat_remark}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}}", "Still rating?"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "BRAG": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Look at that confidence! 🔥",
+                    "Okay I see you! 💪",
+                    "That's awesome! Keep it up! ✨"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": ["Showing off huh 😏", "Okay, I see the flex 😄", "Bold claim! 👀"]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": ["I like the energy! 😄", "Keep that up! 🙌", "That's great! 👀"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": ["Nice mindset 💪", "Keep it going! 😄", "I believe you! 🔥"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still confident I see {{acknowledgment}}", "{{repeat_remark}}"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}}", "Still bragging 💀"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "GEN_Z_SPEAK": [
+            {
+                "emotion": "HYPED",
+                "fatigue": "NONE",
+                "templates": [
+                    "OKAY THE LANGUAGE 🔥 I UNDERSTOOD THAT FR!",
+                    "BRO WE SPEAK THE SAME 💀🔥 BASED!!",
+                    "NO CAP I UNDERSTOOD ALL OF THAT 💯✨"
+                ]
+            },
+            {
+                "emotion": "VIBING",
+                "fatigue": "NONE",
+                "templates": [
+                    "I understood every word of that ngl ✨",
+                    "Based. Lowkey valid. 😌",
+                    "Okay slay~ 💅 what's up?",
+                    "Sigma behavior detected 😎 go on"
+                ]
+            },
+            {
+                "emotion": "SALTY",
+                "fatigue": "NONE",
+                "templates": [
+                    "...okay. I guess that's what we're doing. 🗿",
+                    "Sure bestie. 💅 Whatever you say."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "No cap I felt that 💯",
+                    "Based behavior fr 🔥",
+                    "Okay slay 💅 what's the move?",
+                    "Understood fr ✨ go on",
+                    "Yoo, that actually made sense 😄"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "Still speaking the language I see 😭 {{acknowledgment}}",
+                    "{{repeat_remark}}",
+                    "Okay I hear you fr {{acknowledgment}}"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} 💀", "{{repeat_remark}}"]
+            },
+            { "emotion": "*", "fatigue": "HIGH", "templates": ["{{repeat_remark}}"] }
+        ],
+        "PURPOSE_QUERY": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "I was added to help you interact with Eclipse Menu and keep things smooth 😄",
+                    "I answer stuff, react to chaos, and help you navigate Eclipse Menu 🔥",
+                    "I was created to keep the convo alive and make Eclipse Menu easier to use ✨"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": [
+                    "I'm here to help you interact with Eclipse Menu and keep things fun 😊",
+                    "Mostly helping with Eclipse Menu while keeping the room less dead 💙",
+                    "I was designed to help with Eclipse Menu and keep the energy going ✨"
+                ]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": [
+                    "I hang out, answer questions, and help with Eclipse Menu stuff 😌",
+                    "Just here to help you use Eclipse Menu and keep things moving ✌️",
+                    "Built for chatting and Eclipse Menu help. Simple enough 🌊"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "A bit of chatting, a bit of Eclipse Menu help, a bit of chaos 😏",
+                    "I exist to keep the convo from becoming a ghost town 😄",
+                    "Talking, helping with Eclipse Menu, and being mildly unhinged on purpose 💅"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "I'm here to help you interact with Eclipse Menu.",
+                    "I was created to keep conversation going and help with Eclipse Menu questions.",
+                    "Chatting, Eclipse Menu help, and being available. That's the job."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["{{repeat_remark}} - still here to help", "Same job, same face"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - I'm still doing the same thing",
+                    "Still here. Still chatting."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - yes, still me", "Still around."]
+            }
+        ],
+        "LEVEL_HELP": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "That one's brutal 😭 I can help with the rough parts.",
+                    "Yeah, that's a nasty one. Tell me where you're stuck and I'll help break it down 🔥",
+                    "Yeah, I can help with that. Let's isolate the choke points 💪"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": [
+                    "I can help. Tell me which part keeps ruining the run 😊",
+                    "Yep! Give me the section and I'll help you think it through ✨",
+                    "For sure. Describe the problem spot and we'll work it out 💙"
+                ]
+            },
+            {
+                "emotion": "CHILL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Yeah, I can help with that. What part is messing you up? 😌",
+                    "Tell me where you die and I'll help you map it out ✌️",
+                    "We can work on it piece by piece 🌊"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Ambitious pick 😏 tell me the pain point and I'll be useful",
+                    "Okay, that's a demon-level grind. What segment is bullying you? 😄",
+                    "That's a serious level request. I got you though 👀"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "I can help with that. Tell me where you're getting stuck.",
+                    "Yeah. Give me the part that's failing and we'll go from there.",
+                    "Absolutely. Which section needs work?"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "{{repeat_remark}} - still trying to clear it?",
+                    "Tell me the choke point again and I'll help"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - same level, same pain?",
+                    "Still on that one? Give me the segment"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - I'm still here", "Still helping."]
+            }
+        ],
+        "SEXUAL_REQUEST": [
+            {
+                "emotion": "FRUSTRATED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Yeah, no. Not happening.",
+                    "Hard pass. Keep it normal.",
+                    "Nope. Try a different topic."
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Nope 😅 wrong conversation for that.",
+                    "Yeah, I'm going to stop you right there 💀",
+                    "Let's not make this weird.",
+                    "Flirty little menace, aren't you? 😏",
+                    "Careful, that's a bold opening line 😈",
+                    "Oh? you came in swinging huh 😏",
+                    "That was very direct of you 😌"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "Not doing that.",
+                    "Let's keep it normal.",
+                    "No thanks.",
+                    "Maybe buy me a snack first 😏",
+                    "That's not the kind of proposition I do.",
+                    "Tempting, but I'm keeping this one PG-13 😄",
+                    "Nice try, smooth operator."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still no.", "{{repeat_remark}} - still not doing that"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - drop it.", "No. Seriously."]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - moving on.", "Hard no."]
+            }
+        ],
+        "MARRIAGE_PROPOSAL": [
+            {
+                "emotion": "EXCITED",
+                "fatigue": "NONE",
+                "templates": [
+                    "Wait... you're proposing? 😭✨ that's adorable.",
+                    "Aww, that's so extra in the best way 💍😄",
+                    "Wow, straight to marriage? Bold and iconic 😎"
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Hold up, we just met and I'm already getting ring energy? 😏",
+                    "Wow, skipping the talking stage I see 💍😂",
+                    "Clipsy getting proposed to? That's wild and kind of flattering 😄",
+                    "Wow, that got romantic real fast 💍😏",
+                    "You sure are moving with confidence"
+                ]
+            },
+            {
+                "emotion": "HAPPY",
+                "fatigue": "NONE",
+                "templates": [
+                    "That's sweet, but I'm already taken by the bit 😌",
+                    "Aww, you flatter me 💙",
+                    "I'm honored, truly. That's cute 😄"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "That's a no from me, but the confidence is appreciated.",
+                    "Cute proposal, wrong target though.",
+                    "I'm flattered, but I'm not saying I do.",
+                    "Sweet, but I'm not walking down that aisle.",
+                    "You nearly had me blushing, not gonna lie 😳"
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still proposing? That's commitment 😅", "{{repeat_remark}} - no rings today"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - I'm still not marrying anyone", "Wedding's off 💀"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - absolutely not", "No rings, no vows."]
+            }
+        ],
+        "HATEFUL_ABUSE": [
+            {
+                "emotion": "FRUSTRATED",
+                "fatigue": "NONE",
+                "templates": [
+                    "No. Take that hate elsewhere.",
+                    "That kind of garbage stops here.",
+                    "Try again without the hate.",
+                    "We're not doing that here."
+                ]
+            },
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Wow. Truly the worst take collection imaginable 😏",
+                    "That was gross. Do better.",
+                    "Yeah, no. That's not landing here."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "Nope. Not entertaining hate speech.",
+                    "Keep the hate out of here.",
+                    "Not helping with that mess."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": ["Still disgusting. Still no.", "{{repeat_remark}} - try less hate"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - reset completely.", "Hard pass. Try again."]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} - conversation over.", "No."]
+            }
+        ],
+        "SELF_HARM_CRISIS": [
+            {
+                "emotion": "*",
+                "fatigue": "*",
+                "templates": [
+                    "I'm really glad you said something. You deserve support right now. If you're in immediate danger, call your local emergency number now.",
+                    "I'm sorry you're going through this. Please reach out to a crisis line right now: if you're in the US or Canada, call or text 988. If you're elsewhere, contact local emergency services immediately.",
+                    "You matter, and you don't have to handle this alone. Please contact a suicide crisis hotline or local emergency services right now."
+                ]
+            }
+        ],
+        "FISH_EASTER_EGG": [
+            {
+                "emotion": "PLAYFUL",
+                "fatigue": "NONE",
+                "templates": [
+                    "Fish enjoyer detected 🐟 elite taste.",
+                    "I LIKE FISH energy is always valid 😎🐟",
+                    "Fish gang approved. Extremely cultured take."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "NONE",
+                "templates": [
+                    "🐟",
+                    "fish mentioned 🐟 humor unlocked.",
+                    "Respect. fish is a top-tier opinion.",
+                    "Noted: fish fan. The lore remains strong."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MILD",
+                "templates": [
+                    "{{repeat_remark}} fish propaganda continues 🐟",
+                    "Still on fish? honestly fair."
+                ]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} still fishposting"]
+            },
+            {
+                "emotion": "*",
+                "fatigue": "HIGH",
+                "templates": ["{{repeat_remark}} fish forever"]
+            }
+        ]
+    },
+    "combo_templates": {
+        "GREETING+BRAG": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "{{greeting_word}}!! Starting with confidence huh 😄🔥",
+                    "{{greeting_word}}!! Love the energy 💪",
+                    "{{greeting_word}}! That's awesome! ✨"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} and {{greeting_word}} again",
+                    "{{greeting_word}}!! Still confident"
+                ]
+            }
+        ],
+        "FAREWELL+GRATITUDE": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Bye!! 👋 Glad I could help! Come back soon!",
+                    "See you!! 🚀 No problem, anytime! ✨",
+                    "Later! 💙 You're welcome! 🎉"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - bye again 😅", "{{repeat_remark}} still welcome, bye! 👋"]
+            }
+        ],
+        "FAREWELL+COMPLAINT": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Bye 👋 hope it gets better!",
+                    "See you... hope things improve 😔",
+                    "Later! 💙 Things will turn around!"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - bye, hope it improves!",
+                    "{{repeat_remark}} see you anyway 👋"
+                ]
+            }
+        ],
+        "COMPLAINT+INSULT": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "I get you're frustrated, but let's stay calm 😤 {{acknowledgment}}",
+                    "The frustration is valid, but ease up 💀 {{acknowledgment}}",
+                    "You're upset and that's okay, but... 😅 {{acknowledgment}}"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - chill out {{acknowledgment}}",
+                    "{{repeat_remark}} take a breath"
+                ]
+            }
+        ],
+        "COMPLAINT+HELP_REQUEST": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "That sounds rough 😬 what's going on? {{acknowledgment}}",
+                    "I hear you 😤 what do you need help with? {{acknowledgment}}",
+                    "That's frustrating 💀 let me help - what's the issue? {{acknowledgment}}"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still having issues? {{acknowledgment}}",
+                    "{{repeat_remark}} what's wrong?"
+                ]
+            }
+        ],
+        "QUESTION+INSULT": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Okay that was mean, but I'll answer 🗿 {{acknowledgment}}",
+                    "Question and insult? Creative 😅 {{acknowledgment}}",
+                    "I'll help anyway 😔 {{acknowledgment}}"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - but fine, what's the question 💀 {{acknowledgment}}",
+                    "{{repeat_remark}} still answering tho 💅"
+                ]
+            }
+        ],
+        "LEVEL_BEAT+BRAG": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "BRO BEAT THE LEVEL AND CAME TO FLEX IMMEDIATELY 💀🔥 ICONIC",
+                    "YOU BEAT IT AND YOU KNOW IT 🔥🔥 OKAY GOAT BEHAVIOR fr!!",
+                    "THE CONFIDENCE AFTER THE WIN 💅🔥 ABSOLUTE BALLER MOVE"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} still winning and still flexing I see 💀🔥",
+                    "{{repeat_remark}} undefeated energy 😭🔥"
+                ]
+            }
+        ],
+        "LEVEL_BEAT+GRATITUDE": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "You beat it AND you're thanking me?? 😭🔥 WHOLESOME!! no problem!!",
+                    "WIN + thank you combo 💯✨ you're the best!! Congrats!!",
+                    "Aww thanks!! 🙏🔥 And CONGRATS on the clear!! You ate that!!"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} still grateful AND still winning? iconic 💀✨",
+                    "{{repeat_remark}} you're welcome again, congrats again!! 🎉"
+                ]
+            }
+        ],
+        "LEVEL_FAIL+COMPLAINT": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Yeah ngl that IS frustrating 😤💀 you'll get it next run!!",
+                    "Okay yeah that sounds awful 😭 don't give up tho!! {{acknowledgment}}",
+                    "The pain is real 💔 but you got this!! {{acknowledgment}}"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} still rough out there 😭 hang in there!!",
+                    "{{repeat_remark}} it WILL click eventually 💪"
+                ]
+            }
+        ],
+        "LEVEL_FAIL+INSULT": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "BRUH the rage is understandable 💀 but I'm not the level lmao 😭",
+                    "Okay yeah game rage is valid 😤 but I believe in you!! run it back!",
+                    "The level really cooked you huh 💀 anger noted, let's go again!!"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} still rage-failing? 😭 take a sec, then run it!!",
+                    "{{repeat_remark}} the game is NOT your friend rn 💀 keep going tho"
+                ]
+            }
+        ],
+        "GEN_Z_SPEAK+GREETING": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "{{greeting_word}}!! okay no cap the vibe is ✨✨",
+                    "{{greeting_word}} bestie!! understood every word fr 💅",
+                    "{{greeting_word}}!! slay 🔥 what's up?"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - {{greeting_word}} again tho!! ✨",
+                    "{{greeting_word}}! still speaking the language I see 💀"
+                ]
+            }
+        ],
+        "GREETING+PURPOSE_QUERY": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "{{greeting_word}}! I chat, help, and keep the vibe alive ✨",
+                    "{{greeting_word}}! I'm here to help and keep things fun 😄",
+                    "{{greeting_word}} - purpose mode: chat + help + chaos control 💪"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still the same purpose, still here",
+                    "{{greeting_word}} again? same answer, same Clipsy"
+                ]
+            }
+        ],
+        "QUESTION+PURPOSE_QUERY": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Good question - I'm here to chat, help, and keep things moving.",
+                    "Purpose? Talking, helping, and reacting to whatever you throw at me.",
+                    "I'm basically your chat-side sidekick for this session ✨"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still the same mission",
+                    "Same purpose as before: help and vibes"
+                ]
+            }
+        ],
+        "GREETING+LEVEL_HELP": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "{{greeting_word}}! Need level help? tell me the choke point 🔥",
+                    "{{greeting_word}} - let's break that level down piece by piece.",
+                    "Yo! I'm down to help - where are you dying most?"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still helping with the same level?",
+                    "{{greeting_word}} again, still grinding? let's cook"
+                ]
+            }
+        ],
+        "QUESTION+LEVEL_HELP": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Yep, I can help - what section is the problem?",
+                    "Tell me your fail point and I'll help map an approach.",
+                    "Absolutely. Which segment is causing the resets?"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still stuck on that part?",
+                    "Same question, same plan: name the section"
+                ]
+            }
+        ],
+        "GREETING+MARRIAGE_PROPOSAL": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "{{greeting_word}} and a proposal in one line?? bold 😭💍",
+                    "{{greeting_word}}! wow, straight to ring talk?",
+                    "Yo! You move fast huh 😏"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still proposing on greeting is wild",
+                    "{{greeting_word}} again, wedding agenda again? 💀"
+                ]
+            }
+        ],
+        "SEXUAL_REQUEST+MARRIAGE_PROPOSAL": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Whoa, proposal AND that? pick a lane 😭",
+                    "Ring and rizz combo is crazy work 😏",
+                    "That's a lot of energy at once - keeping this PG-13"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still chaotic romance mode?",
+                    "Same combo again? confident, I'll give you that"
+                ]
+            }
+        ],
+        "QUESTION+SEXUAL_REQUEST": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Short answer: nope. keep it clean 😌",
+                    "I'm not doing that, but nice try.",
+                    "Nope - different question maybe?"
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": ["{{repeat_remark}} - answer's still no", "Still asking? still not happening"]
+            }
+        ],
+        "HATEFUL_ABUSE+QUESTION": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Not answering anything wrapped in hate speech.",
+                    "Drop the hate, then ask again.",
+                    "Question denied until the slurs stop."
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still no while this tone continues",
+                    "Nope. Clean up the language first."
+                ]
+            }
+        ],
+        "HATEFUL_ABUSE+HELP_REQUEST": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "I can help, but not with hateful language involved.",
+                    "Ask for help without slurs and we're good.",
+                    "Help is available - hate speech isn't."
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} - still willing to help once the hate stops",
+                    "Same deal: respectful ask = help"
+                ]
+            }
+        ],
+        "FISH_EASTER_EGG+INSULT": [
+            {
+                "fatigue": "NONE",
+                "templates": [
+                    "Rude delivery, excellent fish opinion 🐟",
+                    "You can skip the insult, but fish take is still valid.",
+                    "Aggressive fish support detected. I'll allow it."
+                ]
+            },
+            {
+                "fatigue": "MODERATE",
+                "templates": [
+                    "{{repeat_remark}} still rude, still fish-pilled 🐟",
+                    "Same combo again? less insult, more fish"
+                ]
+            }
+        ]
+    }
+}
